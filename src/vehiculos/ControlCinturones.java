@@ -42,12 +42,18 @@ public class ControlCinturones {
     }
     
     public String getEstado() {
-        String[] nombres = {"Conductor", "Pasajero 1", "Pasajero 2", "Pasajero 3"};
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
-            sb.append(nombres[i]).append(": ").append(cinturones[i] ? "Abrochado" : "Desabrochado").append("\n");
+      String[] nombres = {"Conductor", "Pasajero 1", "Pasajero 2", "Pasajero 3"};
+    String resultado = "";
+    for (int i = 0; i < 4; i++) {
+        resultado += nombres[i];
+        resultado += ": ";
+        if (cinturones[i]) {
+            resultado += "Abrochado";
+        } else {
+            resultado += "Desabrochado";
         }
-        return sb.toString();
+    }
+    return resultado;
     }
 }
 
