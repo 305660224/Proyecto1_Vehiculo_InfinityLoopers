@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package vehiculos;
+package Sistemasdevehiculos;
  import java.util.ArrayList;
 import java.util.List;
 /**
@@ -11,31 +11,31 @@ import java.util.List;
  */
 public class ControlCinturones {
 
-    private boolean[] cinturones; // 0: Conductor, 1-3: Pasajeros
+    private boolean[] cinturones; 
     
     public ControlCinturones() {
-        this.cinturones = new boolean[4]; // Todos desabrochados inicialmente
+        this.cinturones = new boolean[4]; 
     }
     
     public boolean estaCinturonPuesto(int asiento) {
-        return (asiento >= 0 && asiento < 4) && cinturones[asiento];
+        return (asiento >= 0 && asiento < 3) && cinturones[asiento];
     }
     
     public void colocarCinturon(int asiento) {
-        if (asiento >= 0 && asiento < 4) {
+        if (asiento >= 0 && asiento < 3) {
             cinturones[asiento] = true;
         }
     }
     
     public void quitarCinturon(int asiento) {
-        if (asiento >= 0 && asiento < 4) {
+        if (asiento >= 0 && asiento < 3) {
             cinturones[asiento] = false;
         }
     }
     
     public List<Integer> obtenerCinturonesDesabrochados() {
         List<Integer> lista = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             if (!cinturones[i]) lista.add(i);
         }
         return lista;
@@ -44,7 +44,7 @@ public class ControlCinturones {
     public String getEstado() {
       String[] nombres = {"Conductor", "Pasajero 1", "Pasajero 2", "Pasajero 3"};
     String resultado = "";
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
         resultado += nombres[i];
         resultado += ": ";
         if (cinturones[i]) {
