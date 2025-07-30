@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Sistemas;
+
+
 /**
  *
  * @author Isaac
  */
 public class Limpiaparabrisas {
-    private boolean estado; // true = encendido, false = apagado
+    private boolean estado; // true = encendido false = apagado
     private int velocidad;  // 0 = apagado, 1 = baja, 2 = media, 3 = alta
 
    
