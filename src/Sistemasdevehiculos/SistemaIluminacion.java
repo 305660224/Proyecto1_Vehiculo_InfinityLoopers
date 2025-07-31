@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Sistemasdevehiculos;
-import Vehiculo.Motor;
+import Vehiculos.Motores.Motor;
 /**
  *
  * @author UTN
