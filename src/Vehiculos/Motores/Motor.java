@@ -54,7 +54,7 @@ public class Motor {
 //CONSTRUCTOR
     public Motor() {
         this.Estado = false;
-        this.RPM = 6000; 
+        this.RPM = 5715; 
         this.RPMActual = 0; //6750RPM, a los 40 segundos 4500RPM para cambio, 112.5RPS x 1s,
         this.TSConsumo = 0;
     }
@@ -84,8 +84,8 @@ public class Motor {
  * @param KmHMax 
  * @param ActualKmMax 
  */    
-    public void CalcularRPMActual(int Velocimetro, int VelocidadMaxMarcha) {
-        RPMActual = (Velocimetro/VelocidadMaxMarcha)*RPM;
+    public double CalcularRPMActual(double Velocimetro, double VelocidadMaxMarcha) {
+        return (Velocimetro/VelocidadMaxMarcha)*RPM;
     }
     
 /**

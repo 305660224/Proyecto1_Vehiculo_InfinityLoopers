@@ -100,7 +100,7 @@ public class Vehiculo {
     Timer AumentarVelocidad = new Timer(200, new ActionListener() {
     public void actionPerformed(ActionEvent e) {
            Velocimetro = Velocimetro + 1;
-           motor.CalcularRPMActual(Velocimetro, transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA());
+           motor.setRPMActual((int)motor.CalcularRPMActual((double)Velocimetro, (double)transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA()));
     }
     });
     
@@ -111,7 +111,7 @@ public class Vehiculo {
             DisminuirVelocidad.stop();
         }
            Velocimetro = Velocimetro - 1;
-           
+           motor.setRPMActual((int)motor.CalcularRPMActual((double)Velocimetro, (double)transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA()));
     }
     });
         
