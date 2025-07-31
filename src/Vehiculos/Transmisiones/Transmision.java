@@ -80,7 +80,7 @@ public class Transmision {
         }
     }
     
-    public void setrMarcha3 (){
+    public void setMarcha3 (){
         if (Embrague) {
         Marcha = EstadosMarcha.MARCHA3;
         VelocidadMaxMarcha = VelocidadesMaximas.KmH60;

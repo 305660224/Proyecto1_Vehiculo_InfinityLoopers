@@ -5,6 +5,7 @@
 package GUI;
 import Vehiculos.Vehiculo;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 /**
@@ -20,9 +21,8 @@ public class FRMVehiculo extends javax.swing.JFrame {
     public FRMVehiculo() {
         initComponents();
         ActualizarEstados.start();
+        
         vehiculo.setMarcha();
-        vehiculo.getTransmision().PresionarEmbrague();
-        vehiculo.getTransmision().setMarcha1();
         System.out.println(vehiculo.getTransmision().getMarcha().getMARCHA());
     }
 
@@ -49,11 +49,6 @@ public class FRMVehiculo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         JTB_ActionButton.setText("Acelerar");
-        JTB_ActionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTB_ActionButtonActionPerformed(evt);
-            }
-        });
         JTB_ActionButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JTB_ActionButtonKeyPressed(evt);
@@ -108,21 +103,42 @@ public class FRMVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_JTF_RPMActionPerformed
 
     private void JTB_ActionButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTB_ActionButtonKeyPressed
-        if (evt.getKeyChar()=='w') {
-            vehiculo.Acelerar();
+        if (evt.getKeyCode() == KeyEvent.VK_W){
+        vehiculo.Acelerar();        
         }
-        if (evt.getKeyChar()=='s') {
-            vehiculo.Frenar();
+        if (evt.getKeyCode() == KeyEvent.VK_S){
+        vehiculo.Frenar();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE){
+        vehiculo.getTransmision().PresionarEmbrague();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_1){
+        vehiculo.getTransmision().setMarcha1();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_2){
+        vehiculo.getTransmision().setMarcha2();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_3){
+        vehiculo.getTransmision().setMarcha3();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_4){
+        vehiculo.getTransmision().setMarcha4();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_5){
+        vehiculo.getTransmision().setMarcha5();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_R){
+        vehiculo.getTransmision().setReversa();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_N){
+        vehiculo.getTransmision().setNeutro();
         }
     }//GEN-LAST:event_JTB_ActionButtonKeyPressed
 
     private void JTB_ActionButtonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTB_ActionButtonKeyReleased
         vehiculo.Desacelerar();
+        vehiculo.getTransmision().SoltarEmbrague();
     }//GEN-LAST:event_JTB_ActionButtonKeyReleased
-
-    private void JTB_ActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTB_ActionButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTB_ActionButtonActionPerformed
 
     /**
      * @param args the command line arguments

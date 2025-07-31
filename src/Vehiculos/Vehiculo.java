@@ -135,13 +135,15 @@ public class Vehiculo {
     
     //Metodos
     public void Acelerar(){
-        if (Estado == EstadosVehiculo.MARCHA && Velocimetro <= transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA()) {
-        AumentarVelocidad.setDelay(100*transmision.getMarcha().getMARCHA());
-        AumentarVelocidad.start();
-        DisminuirVelocidad.stop();        
-        }else{
+        if (transmision.getMarcha() != transmision.getMarcha().REVERSA && transmision.getMarcha() != transmision.getMarcha().NEUTRO && Estado == EstadosVehiculo.MARCHA) {
+            if (Velocimetro <= transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA()) {
+                AumentarVelocidad.setDelay(50*transmision.getMarcha().getMARCHA());
+                AumentarVelocidad.start();
+                DisminuirVelocidad.stop();                        
+            }else{
             Velocimetro = transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA();
-        }
+            }
+        }      
     }
     
     public void Frenar(){
