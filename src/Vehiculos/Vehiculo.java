@@ -1,11 +1,13 @@
 package Vehiculos;
 
+import GUI.Sonido;
 import Vehiculos.Motores.Motor;
 import Vehiculos.Tanques.Tanque;
 import Vehiculos.Baterias.Bateria;
 import Vehiculos.Transmisiones.Transmision;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.sound.sampled.Clip;
 import javax.swing.Timer;
 
 /**
@@ -13,6 +15,10 @@ import javax.swing.Timer;
  * @author denis
  */
 public class Vehiculo {
+    
+    Clip Motor_ON = Sonido.Crear("D:\\USB-DENISEEM\\temp\\Proyecto Proga\\Proyecto1_Vehiculo_InfinityLoopers\\src\\GUI\\Sonidos\\Motor_Car.wav");
+
+    
 //ATRIBUTOS
     private Tanque tanque;
     private Motor motor;
@@ -48,7 +54,12 @@ public class Vehiculo {
     }
 
     public Transmision getTransmision() {
+    if (Estado == Estado.MARCHA) {    
         return transmision;
+    } else {
+        transmision.setNeutro();
+        return transmision;
+    }
     }
     
     
@@ -121,17 +132,31 @@ public class Vehiculo {
     }
     });    
     
-    Timer ConsumirGasolina = new Timer(5000, new ActionListener() {
+    Timer ConsumirGasolina = new Timer(100, new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-           tanque.setEstado(motor.getTSConsumo() - tanque.getEstado());
+        if (tanque.getEstado() <= 0) {
+            tanque.setEstado(0);
+            ConsumirGasolina.stop();
+        }
+           tanque.setEstado(tanque.getEstado() - motor.CalcularConsumo(Kilometraje, transmision.getVelocidadMaxMarcha().getVELOCIDADMAXMARCHA()));          
     }
     });    
     
-    Timer ConsumirBateria = new Timer(500, new ActionListener() {
+    Timer ConsumirBateria = new Timer(2000, new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-           //PENDIENTE
+        if (bateria.getCarga() <= 0) {
+            bateria.setCarga(0);
+            ConsumirBateria.stop();
+        }
+           bateria.setCarga(bateria.getCarga()-0.5);
     }
     });    
+    
+        Timer MotorEncendido = new Timer(2000, new ActionListener() {
+    public void actionPerformed(ActionEvent e) { 
+    Sonido.Iniciar(Motor_ON, 0);
+    }
+    });   
     
     //Metodos
     public void Acelerar(){
@@ -164,6 +189,7 @@ public class Vehiculo {
 
     public void setApagar(){
         if (Velocimetro == 0) {
+        MotorEncendido.stop();
         Estado = EstadosVehiculo.APAGADO;
         ConsumirBateria.stop();
         ConsumirGasolina.stop();
@@ -174,6 +200,7 @@ public class Vehiculo {
 
     public void setIgnicion(){
         if (Velocimetro == 0) {
+        MotorEncendido.stop();
         Estado = EstadosVehiculo.IGNICION;
         ConsumirBateria.start();
         ConsumirGasolina.stop();
@@ -184,6 +211,7 @@ public class Vehiculo {
 
     public void setMarcha(){
         if (Velocimetro == 0) {
+        MotorEncendido.start();
         Estado = EstadosVehiculo.MARCHA;
         ConsumirBateria.start();
         ConsumirGasolina.start();

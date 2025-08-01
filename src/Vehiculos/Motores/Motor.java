@@ -15,7 +15,6 @@ public class Motor {
     private boolean Estado;
     private int RPM;
     private int RPMActual;
-    private double TSConsumo;
     
 //METODOS GET
     public boolean getEstado() {
@@ -28,11 +27,7 @@ public class Motor {
 
     public int getRPM() {
         return RPM;
-    }
-
-    public double getTSConsumo() {
-        return TSConsumo;
-    }   
+    }  
     
 //METODOS SET
     public void setEstado(boolean Estado) {
@@ -46,17 +41,12 @@ public class Motor {
     public void setRPM(int RPM) {
         this.RPM = RPM;
     }
-
-    public void setTSConsumo(double TSConsumo) {
-        this.TSConsumo = TSConsumo;
-    }
     
 //CONSTRUCTOR
     public Motor() {
         this.Estado = false;
         this.RPM = 5715; 
         this.RPMActual = 0; //6750RPM, a los 40 segundos 4500RPM para cambio, 112.5RPS x 1s,
-        this.TSConsumo = 0;
     }
 
 //OTROS
@@ -94,8 +84,8 @@ public class Motor {
  * @param Estado
  * @return 
  */
-    public double CalcularConsumo(double Kilometraje, double VelocidadMaxMarcha) {      
-        return Kilometraje/VelocidadMaxMarcha;
+    public double CalcularConsumo(double Kilometraje, double RPMActual) {      
+        return (Kilometraje/100)+(RPMActual/10000);        
     }
       
     

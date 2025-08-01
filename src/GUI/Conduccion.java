@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package GUI;
 import Vehiculos.EstadosVehiculo;
@@ -14,7 +14,7 @@ import javax.swing.Timer;
  *
  * @author 9569
  */
-public class FRMVehiculo extends javax.swing.JFrame {
+public class Conduccion extends javax.swing.JPanel {
 
     int cont = 0;
     int cont2= 0;
@@ -27,11 +27,10 @@ public class FRMVehiculo extends javax.swing.JFrame {
     Clip ReversaWarning = Sonido.Crear("D:\\USB-DENISEEM\\temp\\Proyecto Proga\\Proyecto1_Vehiculo_InfinityLoopers\\src\\GUI\\Sonidos\\Warning_3.wav");
     Clip Warning = Sonido.Crear("D:\\USB-DENISEEM\\temp\\Proyecto Proga\\Proyecto1_Vehiculo_InfinityLoopers\\src\\GUI\\Sonidos\\Warning.wav");
 
-    
     /**
-     * Creates new form FRMVehiculo
+     * Creates new form Conduccion
      */
-    public FRMVehiculo() {
+    public Conduccion() {
         initComponents();
         ActualizarEstados.start();
         Acelerando.setInitialDelay(0);
@@ -39,7 +38,7 @@ public class FRMVehiculo extends javax.swing.JFrame {
         System.out.println(vehiculo.getTransmision().getMarcha().getMARCHA());
     }
     
-            Timer VerificarCarga = new Timer(0, new ActionListener() {
+                Timer VerificarCarga = new Timer(0, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
         if (vehiculo.getTanque().getEstado()<=0 || vehiculo.getBateria().getCarga() <=0) {
             VerificarCarga.stop();
@@ -102,7 +101,7 @@ public class FRMVehiculo extends javax.swing.JFrame {
         vehiculo.getTanque().AdvertirGasolinaBaja(vehiculo.getTanque().getEstado());
     }
     });  
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,7 +111,8 @@ public class FRMVehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        JPB_Bateria = new javax.swing.JProgressBar();
+        JTF_Marcha = new javax.swing.JTextField();
         JTB_ActionButton = new javax.swing.JToggleButton();
         JTF_Velocimetro = new javax.swing.JTextField();
         JTF_RPM = new javax.swing.JTextField();
@@ -122,21 +122,17 @@ public class FRMVehiculo extends javax.swing.JFrame {
         JB_LlenarTanque = new javax.swing.JButton();
         JB_CambiarBateria = new javax.swing.JButton();
         JPB_Gasolina = new javax.swing.JProgressBar();
-        JPB_Bateria = new javax.swing.JProgressBar();
-        JTF_Marcha = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        JPB_Bateria.setString("100");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JTF_Marcha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTF_Marcha.setText("0");
+        JTF_Marcha.setEnabled(false);
+        JTF_Marcha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTF_MarchaActionPerformed(evt);
+            }
+        });
 
         JTB_ActionButton.setText("iiiiiiiiiii");
         JTB_ActionButton.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -204,19 +200,8 @@ public class FRMVehiculo extends javax.swing.JFrame {
 
         JPB_Gasolina.setString("100");
 
-        JPB_Bateria.setString("100");
-
-        JTF_Marcha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTF_Marcha.setText("0");
-        JTF_Marcha.setEnabled(false);
-        JTF_Marcha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTF_MarchaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -247,7 +232,7 @@ public class FRMVehiculo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(JB_CambiarBateria)
                                     .addComponent(JB_LlenarTanque, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,83 +261,85 @@ public class FRMVehiculo extends javax.swing.JFrame {
                 .addComponent(JB_CambiarBateria)
                 .addContainerGap(96, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTF_RPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_RPMActionPerformed
+    private void JTF_MarchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_MarchaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTF_RPMActionPerformed
+    }//GEN-LAST:event_JTF_MarchaActionPerformed
 
     private void JTB_ActionButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTB_ActionButtonKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_W){
             if (vehiculo.getEstado() == vehiculo.getEstado().MARCHA && vehiculo.getTransmision().getMarcha() != vehiculo.getTransmision().getMarcha().NEUTRO && vehiculo.getTransmision().getMarcha() != vehiculo.getTransmision().getMarcha().REVERSA) {
-            vehiculo.Acelerar();  
-            Acelerando.start();
-            Desacelerando.stop();
-            Sonido.Detener(Disacceleration);
+                vehiculo.Acelerar();
+                Acelerando.start();
+                Desacelerando.stop();
+                Sonido.Detener(Disacceleration);
             }
         }
         if (evt.getKeyCode() == KeyEvent.VK_S){
             vehiculo.Frenar();
-        if (vehiculo.getTransmision().getMarcha() == vehiculo.getTransmision().getMarcha().REVERSA){
-            SonidoReverda.start();
-        }
+            if (vehiculo.getTransmision().getMarcha() == vehiculo.getTransmision().getMarcha().REVERSA){
+                SonidoReverda.start();
+            }
         }
         if (evt.getKeyCode() == KeyEvent.VK_SPACE){
-        vehiculo.getTransmision().PresionarEmbrague();
+            vehiculo.getTransmision().PresionarEmbrague();
         }
         if (evt.getKeyCode() == KeyEvent.VK_1){
-        vehiculo.getTransmision().setMarcha1();
+            vehiculo.getTransmision().setMarcha1();
         }
         if (evt.getKeyCode() == KeyEvent.VK_2){
-        vehiculo.getTransmision().setMarcha2();
+            vehiculo.getTransmision().setMarcha2();
         }
         if (evt.getKeyCode() == KeyEvent.VK_3){
-        vehiculo.getTransmision().setMarcha3();
+            vehiculo.getTransmision().setMarcha3();
         }
         if (evt.getKeyCode() == KeyEvent.VK_4){
-        vehiculo.getTransmision().setMarcha4();
+            vehiculo.getTransmision().setMarcha4();
         }
         if (evt.getKeyCode() == KeyEvent.VK_5){
-        vehiculo.getTransmision().setMarcha5();
+            vehiculo.getTransmision().setMarcha5();
         }
         if (evt.getKeyCode() == KeyEvent.VK_R){
-        vehiculo.getTransmision().setReversa();
+            vehiculo.getTransmision().setReversa();
         }
         if (evt.getKeyCode() == KeyEvent.VK_N){
-        vehiculo.getTransmision().setNeutro();
+            vehiculo.getTransmision().setNeutro();
         }
         if (evt.getKeyCode() == KeyEvent.VK_TAB){
-        VerificarCarga.start();
-        vehiculo.setMarcha();
-        Sonido.Iniciar(Motor_ON_Car, 0);
+            VerificarCarga.start();
+            vehiculo.setMarcha();
+            Sonido.Iniciar(Motor_ON_Car, 0);
         }
         if (evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK){
-        VerificarCarga.start();
-        vehiculo.setIgnicion();        
+            VerificarCarga.start();
+            vehiculo.setIgnicion();
         }
         if (evt.getKeyCode() == KeyEvent.VK_SHIFT){
-        vehiculo.setApagar();
+            vehiculo.setApagar();
         }
     }//GEN-LAST:event_JTB_ActionButtonKeyPressed
 
     private void JTB_ActionButtonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTB_ActionButtonKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_W){
             if (vehiculo.getEstado() == vehiculo.getEstado().MARCHA && vehiculo.getTransmision().getMarcha() != vehiculo.getTransmision().getMarcha().REVERSA) {
-            vehiculo.Desacelerar();
-            Acelerando.stop();
-            Desacelerando.start();
+                vehiculo.Desacelerar();
+                Acelerando.stop();
+                Desacelerando.start();
             }
             Sonido.Detener(Acceleration);
-            }
+        }
         if (evt.getKeyCode() == KeyEvent.VK_S){
             if (vehiculo.getTransmision().getMarcha() == vehiculo.getTransmision().getMarcha().REVERSA){
                 SonidoReverda.stop();
             }
-            }
+        }
         vehiculo.getTransmision().SoltarEmbrague();
     }//GEN-LAST:event_JTB_ActionButtonKeyReleased
+
+    private void JTF_RPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_RPMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTF_RPMActionPerformed
 
     private void JTF_EstadoGasolinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_EstadoGasolinaActionPerformed
         // TODO add your handling code here:
@@ -366,59 +353,14 @@ public class FRMVehiculo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_EstadoBateriaActionPerformed
 
-    private void JB_CambiarBateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CambiarBateriaActionPerformed
-        vehiculo.getBateria().CambiarBateria();
-    }//GEN-LAST:event_JB_CambiarBateriaActionPerformed
-
     private void JB_LlenarTanqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LlenarTanqueActionPerformed
         vehiculo.getTanque().LlenarTanque();
     }//GEN-LAST:event_JB_LlenarTanqueActionPerformed
 
-    private void JTF_MarchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_MarchaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTF_MarchaActionPerformed
+    private void JB_CambiarBateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CambiarBateriaActionPerformed
+        vehiculo.getBateria().CambiarBateria();
+    }//GEN-LAST:event_JB_CambiarBateriaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FRMVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FRMVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FRMVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FRMVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FRMVehiculo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_CambiarBateria;
@@ -432,6 +374,5 @@ public class FRMVehiculo extends javax.swing.JFrame {
     private javax.swing.JTextField JTF_Marcha;
     private javax.swing.JTextField JTF_RPM;
     private javax.swing.JTextField JTF_Velocimetro;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

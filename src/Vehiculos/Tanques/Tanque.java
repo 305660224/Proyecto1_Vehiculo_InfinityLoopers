@@ -40,13 +40,14 @@ public class Tanque {
     
     //Metodos
     public void LlenarTanque() {
-        if (AdvertirGasolinaBaja(Estado, true)) {
+        if (AdvertirGasolinaBaja(Estado)) {
             Estado=100;
+            Advertencia.stop();
         }
     }
 
-    public boolean AdvertirGasolinaBaja(double Gasolina, boolean Estado) {
-        if (Gasolina < 30 && Estado) {
+    public boolean AdvertirGasolinaBaja(double Gasolina) {
+        if (Gasolina < 30) {
             Advertencia.start();
             return true;
         } else {
