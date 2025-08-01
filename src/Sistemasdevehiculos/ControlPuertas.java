@@ -3,62 +3,66 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Sistemasdevehiculos;
- import java.util.ArrayList;
-import java.util.List;
+
 /**
  *
  * @author UTN
  */
 public class ControlPuertas {
-  
-    private boolean[] puertasAbiertas; //
+    private static final int NUM_PUERTAS = 4;
+    private boolean[] estadoPuertas; // true = abierta, false = cerrada
     
     public ControlPuertas() {
-        puertasAbiertas = new boolean[4]; 
+        estadoPuertas = new boolean[NUM_PUERTAS];
     }
     
- 
     public void abrirPuerta(int numeroPuerta) {
-        int puerta = numeroPuerta - 1;
-        if (puerta >= 0 && puerta < puertasAbiertas.length) {
-            puertasAbiertas[puerta] = true;
+        if (esNumeroValido(numeroPuerta)) {
+            estadoPuertas[numeroPuerta - 1] = true;
         }
     }
     
-   
     public void cerrarPuerta(int numeroPuerta) {
-        int puertas = numeroPuerta - 1;
-        if (puertas >= 0 && puertas < puertasAbiertas.length) {
-            puertasAbiertas[puertas] = false;
+        if (esNumeroValido(numeroPuerta)) {
+            estadoPuertas[numeroPuerta - 1] = false;
         }
     }
     
-  
     public boolean esPuertaAbierta(int numeroPuerta) {
-        int put = numeroPuerta - 1;
-        if (put >= 0 && put < puertasAbiertas.length) {
-            return puertasAbiertas[put];
-        }
-        return false;
+        return esNumeroValido(numeroPuerta) && estadoPuertas[numeroPuerta - 1];
     }
-   
-    public List<Integer> obtenerPuertasAbiertas() {
-        List<Integer> abiertas = new ArrayList<>();
-        for (int i = 0; i < puertasAbiertas.length; i++) {
-            if (puertasAbiertas[i]) {
-                abiertas.add(i + 1); 
+    
+    public int[] obtenerPuertasAbiertas() {
+        // Primero contamos cuántas están abiertas
+        int contador = 0;
+        for (boolean abierta : estadoPuertas) {
+            if (abierta) contador++;
+        }
+        
+        // Creamos array con el tamaño exacto
+        int[] puertasAbiertas = new int[contador];
+        int indice = 0;
+        
+        // Llenamos el array
+        for (int i = 0; i < NUM_PUERTAS; i++) {
+            if (estadoPuertas[i]) {
+                puertasAbiertas[indice++] = i + 1; // +1 para número de puerta
             }
         }
-        return abiertas;
+        
+        return puertasAbiertas;
     }
     
     public String getEstado() {
-    String resultado = "";
-    for (int i = 0; i < puertasAbiertas.length; i++) {
-        resultado += "Puerta " + (i + 1) + ": " + 
-                    (puertasAbiertas[i] ? "Abierta" : "Cerrada") + "\n";
+    String estado = "";
+    for (int i = 1; i <= NUM_PUERTAS; i++) {
+        estado += "Puerta " + i + ": " + (esPuertaAbierta(i) ? "Abierta" : "Cerrada") + "\n";
     }
-    return resultado;
+    return estado;
+}
+    
+    private boolean esNumeroValido(int numeroPuerta) {
+        return numeroPuerta >= 1 && numeroPuerta <= NUM_PUERTAS;
     }
 }
 
