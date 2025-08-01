@@ -7,6 +7,7 @@ package Sistemas;
  *
  * @author isaac
  */
+// pendiente agregar en encendio con motor
 public class Radio {
     private boolean encendida;
     private double frecuencia;
