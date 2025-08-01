@@ -138,7 +138,7 @@ public class Cond1 extends javax.swing.JPanel {
                 JTF_KilometrajeActionPerformed(evt);
             }
         });
-        jPanel1.add(JTF_Kilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 190, 20));
+        jPanel1.add(JTF_Kilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 190, -1));
 
         JB_LlenarTanque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/RecargarGasolina.png"))); // NOI18N
         JB_LlenarTanque.setText("LlenarTanque");
