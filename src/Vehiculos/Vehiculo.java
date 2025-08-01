@@ -128,7 +128,7 @@ public class Vehiculo {
         
     Timer AumentarKilometraje = new Timer(500, new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-           Kilometraje = Kilometraje + (double)Velocimetro/3600;
+           Kilometraje = Kilometraje + (double)((int)(((double)Velocimetro/3600)*100000000))/100000000;
     }
     });    
     

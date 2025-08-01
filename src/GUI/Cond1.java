@@ -14,7 +14,7 @@ import javax.swing.Timer;
  *
  * @author 9569
  */
-public class Conduccion extends javax.swing.JPanel {
+public class Cond1 extends javax.swing.JPanel {
 
     int cont = 0;
     int cont2= 0;
@@ -30,7 +30,7 @@ public class Conduccion extends javax.swing.JPanel {
     /**
      * Creates new form Conduccion
      */
-    public Conduccion() {
+    public Cond1() {
         initComponents();
         ActualizarEstados.start();
         Acelerando.setInitialDelay(0);
@@ -91,10 +91,7 @@ public class Conduccion extends javax.swing.JPanel {
     public void actionPerformed(ActionEvent e) {        
         JTF_Velocimetro.setText(String.valueOf(vehiculo.getVelocimetro()));
         JTF_RPM.setText(String.valueOf(vehiculo.getMotor().getRPMActual()));
-        JTF_EstadoGasolina.setText(String.valueOf(vehiculo.getTanque().getEstado()));
-        JTF_EstadoGasolina.setText(String.valueOf(vehiculo.getTanque().getEstado()));
         JTF_Kilometraje.setText(String.valueOf(vehiculo.getKilometraje()));
-        JTF_EstadoBateria.setText(String.valueOf(vehiculo.getBateria().getCarga()));
         JTF_Marcha.setText(String.valueOf(vehiculo.getTransmision().getMarcha()));
         JPB_Gasolina.setValue((int)vehiculo.getTanque().getEstado());
         JPB_Bateria.setValue((int)vehiculo.getBateria().getCarga());
@@ -111,61 +108,28 @@ public class Conduccion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        JTF_Kilometraje = new javax.swing.JTextField();
+        JB_LlenarTanque = new javax.swing.JButton();
+        JB_CambiarBateria = new javax.swing.JButton();
+        JPB_Gasolina = new javax.swing.JProgressBar();
         JPB_Bateria = new javax.swing.JProgressBar();
         JTF_Marcha = new javax.swing.JTextField();
         JTB_ActionButton = new javax.swing.JToggleButton();
         JTF_Velocimetro = new javax.swing.JTextField();
         JTF_RPM = new javax.swing.JTextField();
-        JTF_EstadoGasolina = new javax.swing.JTextField();
-        JTF_Kilometraje = new javax.swing.JTextField();
-        JTF_EstadoBateria = new javax.swing.JTextField();
-        JB_LlenarTanque = new javax.swing.JButton();
-        JB_CambiarBateria = new javax.swing.JButton();
-        JPB_Gasolina = new javax.swing.JProgressBar();
+        JL_Velocimetro = new javax.swing.JLabel();
+        JL_RPM1 = new javax.swing.JLabel();
+        JL_RPM2 = new javax.swing.JLabel();
+        JL_RPM3 = new javax.swing.JLabel();
+        JL_RPM4 = new javax.swing.JLabel();
 
-        JPB_Bateria.setString("100");
+        setMinimumSize(new java.awt.Dimension(780, 290));
 
-        JTF_Marcha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTF_Marcha.setText("0");
-        JTF_Marcha.setEnabled(false);
-        JTF_Marcha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTF_MarchaActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JTB_ActionButton.setText("iiiiiiiiiii");
-        JTB_ActionButton.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JTB_ActionButtonKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                JTB_ActionButtonKeyReleased(evt);
-            }
-        });
-
-        JTF_Velocimetro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTF_Velocimetro.setText("0");
-        JTF_Velocimetro.setEnabled(false);
-
-        JTF_RPM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTF_RPM.setText("0");
-        JTF_RPM.setEnabled(false);
-        JTF_RPM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTF_RPMActionPerformed(evt);
-            }
-        });
-
-        JTF_EstadoGasolina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTF_EstadoGasolina.setText("0");
-        JTF_EstadoGasolina.setEnabled(false);
-        JTF_EstadoGasolina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTF_EstadoGasolinaActionPerformed(evt);
-            }
-        });
-
+        JTF_Kilometraje.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JTF_Kilometraje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTF_Kilometraje.setText("0");
         JTF_Kilometraje.setEnabled(false);
@@ -174,92 +138,99 @@ public class Conduccion extends javax.swing.JPanel {
                 JTF_KilometrajeActionPerformed(evt);
             }
         });
+        jPanel1.add(JTF_Kilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 190, 20));
 
-        JTF_EstadoBateria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTF_EstadoBateria.setText("0");
-        JTF_EstadoBateria.setEnabled(false);
-        JTF_EstadoBateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTF_EstadoBateriaActionPerformed(evt);
-            }
-        });
-
+        JB_LlenarTanque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/RecargarGasolina.png"))); // NOI18N
         JB_LlenarTanque.setText("LlenarTanque");
         JB_LlenarTanque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_LlenarTanqueActionPerformed(evt);
             }
         });
+        jPanel1.add(JB_LlenarTanque, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, 40));
 
+        JB_CambiarBateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/CambiarBateria.png"))); // NOI18N
         JB_CambiarBateria.setText("CambiarBateria");
         JB_CambiarBateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_CambiarBateriaActionPerformed(evt);
             }
         });
+        jPanel1.add(JB_CambiarBateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, 40));
 
         JPB_Gasolina.setString("100");
+        jPanel1.add(JPB_Gasolina, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 140, 13));
+
+        JPB_Bateria.setString("100");
+        jPanel1.add(JPB_Bateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 190, 13));
+
+        JTF_Marcha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTF_Marcha.setText("-");
+        JTF_Marcha.setEnabled(false);
+        JTF_Marcha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTF_MarchaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JTF_Marcha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 120, -1));
+
+        JTB_ActionButton.setText("Conducir");
+        JTB_ActionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTB_ActionButtonActionPerformed(evt);
+            }
+        });
+        JTB_ActionButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JTB_ActionButtonKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTB_ActionButtonKeyReleased(evt);
+            }
+        });
+        jPanel1.add(JTB_ActionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+
+        JTF_Velocimetro.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        JTF_Velocimetro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTF_Velocimetro.setText("0");
+        JTF_Velocimetro.setEnabled(false);
+        jPanel1.add(JTF_Velocimetro, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 73, -1));
+
+        JTF_RPM.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        JTF_RPM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTF_RPM.setText("0");
+        JTF_RPM.setEnabled(false);
+        JTF_RPM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTF_RPMActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JTF_RPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 100, -1));
+
+        JL_Velocimetro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Velocimetro.png"))); // NOI18N
+        jPanel1.add(JL_Velocimetro, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        JL_RPM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Apagado.png"))); // NOI18N
+        jPanel1.add(JL_RPM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+
+        JL_RPM2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/RPM.png"))); // NOI18N
+        jPanel1.add(JL_RPM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
+
+        JL_RPM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Bateria.png"))); // NOI18N
+        jPanel1.add(JL_RPM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+
+        JL_RPM4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Gasolina.png"))); // NOI18N
+        jPanel1.add(JL_RPM4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTF_Kilometraje, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JTF_Velocimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(JTB_ActionButton))
-                            .addComponent(JTF_RPM, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(JTF_EstadoGasolina, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(JPB_Gasolina, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(JTF_EstadoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(JPB_Bateria, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(JTF_Marcha, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JB_CambiarBateria)
-                                    .addComponent(JB_LlenarTanque, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JTF_RPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTF_EstadoGasolina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(JPB_Gasolina, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JPB_Bateria, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JTF_Velocimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTF_EstadoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTF_Kilometraje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTF_Marcha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTB_ActionButton)
-                    .addComponent(JB_LlenarTanque))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JB_CambiarBateria)
-                .addContainerGap(96, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -310,13 +281,16 @@ public class Conduccion extends javax.swing.JPanel {
             VerificarCarga.start();
             vehiculo.setMarcha();
             Sonido.Iniciar(Motor_ON_Car, 0);
+            JL_RPM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Marcha.png")));
         }
         if (evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK){
             VerificarCarga.start();
             vehiculo.setIgnicion();
+            JL_RPM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Ignicion.png")));
         }
         if (evt.getKeyCode() == KeyEvent.VK_SHIFT){
             vehiculo.setApagar();
+            JL_RPM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/Apagado.png")));
         }
     }//GEN-LAST:event_JTB_ActionButtonKeyPressed
 
@@ -341,17 +315,9 @@ public class Conduccion extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_RPMActionPerformed
 
-    private void JTF_EstadoGasolinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_EstadoGasolinaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTF_EstadoGasolinaActionPerformed
-
     private void JTF_KilometrajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_KilometrajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_KilometrajeActionPerformed
-
-    private void JTF_EstadoBateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_EstadoBateriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTF_EstadoBateriaActionPerformed
 
     private void JB_LlenarTanqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LlenarTanqueActionPerformed
         vehiculo.getTanque().LlenarTanque();
@@ -361,18 +327,26 @@ public class Conduccion extends javax.swing.JPanel {
         vehiculo.getBateria().CambiarBateria();
     }//GEN-LAST:event_JB_CambiarBateriaActionPerformed
 
+    private void JTB_ActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTB_ActionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTB_ActionButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_CambiarBateria;
     private javax.swing.JButton JB_LlenarTanque;
+    private javax.swing.JLabel JL_RPM1;
+    private javax.swing.JLabel JL_RPM2;
+    private javax.swing.JLabel JL_RPM3;
+    private javax.swing.JLabel JL_RPM4;
+    private javax.swing.JLabel JL_Velocimetro;
     private javax.swing.JProgressBar JPB_Bateria;
     private javax.swing.JProgressBar JPB_Gasolina;
     private javax.swing.JToggleButton JTB_ActionButton;
-    private javax.swing.JTextField JTF_EstadoBateria;
-    private javax.swing.JTextField JTF_EstadoGasolina;
     private javax.swing.JTextField JTF_Kilometraje;
     private javax.swing.JTextField JTF_Marcha;
     private javax.swing.JTextField JTF_RPM;
     private javax.swing.JTextField JTF_Velocimetro;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

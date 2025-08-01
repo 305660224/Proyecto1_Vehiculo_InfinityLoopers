@@ -131,7 +131,7 @@ private void cambiarpanel(JPanel p){
         cont.repaint();
 }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       Apage4 p4 = new Apage4();
+       Cond1 p4 = new Cond1();
         cambiarpanel(p4);
     }//GEN-LAST:event_jButton4ActionPerformed
 
