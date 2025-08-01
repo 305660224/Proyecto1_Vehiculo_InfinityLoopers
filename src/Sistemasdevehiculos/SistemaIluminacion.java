@@ -4,6 +4,7 @@
  */
 package Sistemasdevehiculos;
 import Vehiculos.Motores.Motor;
+
 /**
  *
  * @author UTN
@@ -71,14 +72,14 @@ public class SistemaIluminacion {
     }
     
   
-    public void apagarIntermitentes() {
+public void apagarIntermitentes() {
         intermitentesEncendidos = false;
         direccionalIzquierdaActiva = false;
         direccionalDerechaActiva = false;
     }
     
 
-    public void activarDireccionalIzquierda() {
+public void activarDireccionalIzquierda() {
         if (motor.getEstado() && !intermitentesEncendidos) {
             direccionalIzquierdaActiva = true;
         }
@@ -105,27 +106,20 @@ public class SistemaIluminacion {
     /**
      * Desactiva la direccional derecha
      */
-    public void desactivarDireccionalDerecha() {
+public void desactivarDireccionalDerecha() {
         if (!intermitentesEncendidos) {
             direccionalDerechaActiva = false;
         }
     }
     
     
-    /**
-     * Enciende la luz de una puerta específica si el motor está encendido
-     * @param numeroPuerta Número de puerta (0-3)
-     */
+    
     public void encenderLuzPuerta(int numeroPuerta) {
         if (motor.getEstado() && numeroPuerta >= 0 && numeroPuerta < lucesPuertas.length) {
             lucesPuertas[numeroPuerta] = true;
         }
     }
-    
-    /**
-     * Apaga la luz de una puerta específica
-     * @param numeroPuerta Número de puerta (0-3)
-     */
+  
     public void apagarLuzPuerta(int numeroPuerta) {
         if (numeroPuerta >= 0 && numeroPuerta < lucesPuertas.length) {
             lucesPuertas[numeroPuerta] = false;
@@ -136,23 +130,23 @@ public class SistemaIluminacion {
         return lucesBajasEncendidas;
     }
     
-    public boolean isLucesAltasEncendidas() {
+ public boolean isLucesAltasEncendidas() {
         return lucesAltasEncendidas;
     }
     
-    public boolean isIntermitentesEncendidos() {
+ public boolean isIntermitentesEncendidos() {
         return intermitentesEncendidos;
     }
     
-    public boolean isDireccionalIzquierdaActiva() {
+ public boolean isDireccionalIzquierdaActiva() {
         return direccionalIzquierdaActiva;
     }
     
-    public boolean isDireccionalDerechaActiva() {
+ public boolean isDireccionalDerechaActiva() {
         return direccionalDerechaActiva;
     }
     
-    public boolean isLuzPuertaEncendida(int numeroPuerta) {
+ public boolean isLuzPuertaEncendida(int numeroPuerta) {
         if (numeroPuerta >= 0 && numeroPuerta < lucesPuertas.length) {
             return lucesPuertas[numeroPuerta];
         }
