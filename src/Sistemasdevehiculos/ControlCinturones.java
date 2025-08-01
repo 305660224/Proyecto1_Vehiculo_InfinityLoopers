@@ -3,58 +3,63 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Sistemasdevehiculos;
- import java.util.ArrayList;
-import java.util.List;
+ 
 /**
  *
  * @author UTN
  */
 public class ControlCinturones {
-
     private boolean[] cinturones; 
+    private static final int NUM_ASIENTOS = 4;
+    private static final String[] NOMBRES_ASIENTOS = {"Conductor", "Pasajero 1", "Pasajero 2", "Pasajero 3"};
     
-    public ControlCinturones() {
-        this.cinturones = new boolean[4]; 
+ public ControlCinturones() {
+        this.cinturones = new boolean[NUM_ASIENTOS]; 
     }
     
-    public boolean estaCinturonPuesto(int asiento) {
-        return (asiento >= 0 && asiento < 3) && cinturones[asiento];
+public boolean estaCinturonPuesto(int asiento) {
+        validarAsiento(asiento);
+        return cinturones[asiento];
     }
     
-    public void colocarCinturon(int asiento) {
-        if (asiento >= 0 && asiento < 3) {
-            cinturones[asiento] = true;
+public void colocarCinturon(int asiento) {
+        validarAsiento(asiento);
+        cinturones[asiento] = true;
+    }
+    
+public void quitarCinturon(int asiento) {
+        validarAsiento(asiento);
+        cinturones[asiento] = false;
+    }
+    
+public int[] obtenerCinturonesDesabrochados() {
+      int contador = 0;
+        for (boolean puesto : cinturones) {
+            if (!puesto) contador++;
         }
-    }
-    
-    public void quitarCinturon(int asiento) {
-        if (asiento >= 0 && asiento < 3) {
-            cinturones[asiento] = false;
+        
+        int[] resultado = new int[contador];
+        int indice = 0;
+        for (int i = 0; i < NUM_ASIENTOS; i++) {
+            if (!cinturones[i]) {
+                resultado[indice++] = i;
+            }
         }
+        return resultado;
     }
     
-    public List<Integer> obtenerCinturonesDesabrochados() {
-        List<Integer> lista = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            if (!cinturones[i]) lista.add(i);
-        }
-        return lista;
-    }
-    
-    public String getEstado() {
-      String[] nombres = {"Conductor", "Pasajero 1", "Pasajero 2", "Pasajero 3"};
+public String getEstado() {
     String resultado = "";
-    for (int i = 0; i < 3; i++) {
-        resultado += nombres[i];
-        resultado += ": ";
-        if (cinturones[i]) {
-            resultado += "Abrochado";
-        } else {
-            resultado += "Desabrochado";
-        }
+    for (int i = 0; i < NUM_ASIENTOS; i++) {
+        resultado += NOMBRES_ASIENTOS[i] + ": " + 
+                   (cinturones[i] ? "Abrochado" : "Desabrochado");
+        if (i < NUM_ASIENTOS - 1) resultado += ", ";
     }
     return resultado;
+}
+private void validarAsiento(int asiento) {
+        if (asiento < 0 || asiento >= NUM_ASIENTOS) {
+            throw new IllegalArgumentException("Número de asiento inválido: " + asiento);
+        }
     }
 }
-
-
