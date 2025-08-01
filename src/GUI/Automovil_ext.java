@@ -11,12 +11,12 @@ import javax.swing.JPanel;
  *
  * @author isaac
  */
-public class Automovil extends javax.swing.JFrame {
+public class Automovil_ext extends javax.swing.JFrame {
 
     /**
      * Creates new form radio
      */
-    public Automovil() {
+    public Automovil_ext() {
         initComponents();
 
     }
@@ -33,10 +33,6 @@ public class Automovil extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         Auto1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
         CalleLabel = new javax.swing.JLabel();
         cont = new javax.swing.JPanel();
 
@@ -46,8 +42,8 @@ public class Automovil extends javax.swing.JFrame {
         bg.setEnabled(false);
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Auto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Auto2.jpg"))); // NOI18N
-        bg.add(Auto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 450, 190));
+        Auto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Auto1.png"))); // NOI18N
+        bg.add(Auto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 570, 200));
 
         jButton1.setText("Entrar al auto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -55,29 +51,7 @@ public class Automovil extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
-
-        jButton2.setText("Activar Bloqueo");
-        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 120, 20));
-
-        jButton3.setText("Llenar combustible");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        bg.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 140, -1));
-
-        jButton4.setText("Inspecionar Motor");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        bg.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
-
-        jCheckBox1.setText("jCheckBox1");
-        bg.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 90, 40));
+        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
         CalleLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calle1.jpg"))); // NOI18N
         CalleLabel.setText("jLabel1");
@@ -117,11 +91,6 @@ public class Automovil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Apage1 p1 = new Apage1();
-        cambiarpanel(p1);
-    }//GEN-LAST:event_jButton3ActionPerformed
 private void cambiarpanel(JPanel p){
     p.setSize(780, 290);
         p.setLocation(0, 0);
@@ -130,14 +99,10 @@ private void cambiarpanel(JPanel p){
         cont.revalidate();
         cont.repaint();
 }
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       Cond1 p4 = new Cond1();
-        cambiarpanel(p4);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Apage2 p2 = new Apage2();
-        cambiarpanel(p2);
+       Automovil_int newframe = new Automovil_int();
+          newframe.setVisible(true); 
+          this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -157,21 +122,23 @@ private void cambiarpanel(JPanel p){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Automovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Automovil_ext.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Automovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Automovil_ext.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Automovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Automovil_ext.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Automovil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Automovil_ext.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Automovil().setVisible(true);
+                new Automovil_ext().setVisible(true);
             }
         });
     }
@@ -182,9 +149,5 @@ private void cambiarpanel(JPanel p){
     private javax.swing.JPanel bg;
     private javax.swing.JPanel cont;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,10 +10,9 @@ package Sistemas;
 // pendiente agregar en encendio con motor
 public class Radio {
     private boolean encendida;
-    private double frecuencia;
-    private String modo; 
+    public double frecuencia;
+    public String modo; 
     private int volumen;
-    private String cancionActual;
     private boolean reproduciendo;
 
     public Radio() {
@@ -21,8 +20,6 @@ public class Radio {
         this.frecuencia = 69.0;
         this.modo = "FM";
         this.volumen = 5; 
-
-        this.cancionActual = null;
         this.reproduciendo = false;
     }
 
@@ -60,32 +57,20 @@ public class Radio {
         }
     }
 
-    public void setCancion(String cancion) {
-        this.cancionActual = cancion;
-    }
 
     public void reproducir() {
-        if (modo.equalsIgnoreCase("Bluetooth") && cancionActual != null) {
-            reproduciendo = true;
-        }
+       reproduciendo = true;
     }
 
     public void pausar() {
-        if (modo.equalsIgnoreCase("Bluetooth") && reproduciendo) {
-            reproduciendo = false;
-        }
+      reproduciendo = false;
     }
-
-    public String getCancionActual() {
-        return cancionActual;
-    }
-
+    
     public boolean isReproduciendo() {
         return reproduciendo;
     }
 
     private void reproducirPausarReset() {
         reproduciendo = false;
-        cancionActual = null;
     }
 }

@@ -55,7 +55,7 @@ public class SistemaAlarmaSeguridad{
         return controlPuertas.esPuertaAbierta(numeroPuerta);
     }
 
-    public List<Integer> obtenerPuertasAbiertas() {
+    public int[] obtenerPuertasAbiertas() {
         return controlPuertas.obtenerPuertasAbiertas();
     }
 }
